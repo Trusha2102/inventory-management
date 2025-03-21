@@ -6,14 +6,14 @@ const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || "6wedfw566wedwe58d4wed"; // Change in production
 
 export const AuthService = {
-  async register(name: string, email: string, password: string) {
+  async register(name: string, email: string, password: string, role: any) {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await prisma.user.create({
-      data: { name, email, password: hashedPassword },
+      data: { name, email, password: hashedPassword, role },
     });
 
-    return { id: user.id, name: user.name, email: user.email }; // Don't return password
+    return { id: user.id, name: user.name, email: user.email, role }; // Don't return password
   },
 
   async login(email: string, password: string) {

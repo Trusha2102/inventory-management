@@ -1,5 +1,5 @@
 import express from "express";
-import { authenticateUser } from "../middleware/authMiddleware";
+import { authenticateUser, authorizeRole } from "../middleware/authMiddleware";
 import {
   createProduct,
   getAllProducts,
@@ -10,10 +10,10 @@ import {
 
 const router = express.Router();
 
-router.post("/",authenticateUser, createProduct);
-router.get("/", getAllProducts);
-router.get("/:id", getProductById);
-router.put("/:id", authenticateUser, updateProduct);
-router.delete("/:id", authenticateUser, deleteProduct);
+router.post("/", authenticateUser, authorizeRole(["admin"]), createProduct); // ✅ Only Admin
+router.get("/", authenticateUser, getAllProducts); 
+router.get("/:id", authenticateUser, getProductById); 
+router.put("/:id", authenticateUser, authorizeRole(["admin"]), updateProduct); // ✅ Only Admin
+router.delete("/:id", authenticateUser, authorizeRole(["admin"]), deleteProduct); // ✅ Only Admin
 
 export default router;

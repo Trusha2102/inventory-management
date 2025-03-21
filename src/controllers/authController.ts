@@ -3,8 +3,8 @@ import { AuthService } from "../services/authService";
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
-    const { name, email, password } = req.body;
-    const user = await AuthService.register(name, email, password);
+    const { name, email, password, role } = req.body;
+    const user = await AuthService.register(name, email, password, role);
     res.status(201).json(user);
     return;
   } catch (error) {
