@@ -8,6 +8,7 @@ import categoryRoutes from "./routes/categoryRoutes";
 import stockRoutes from "./routes/stockRoutes";
 import authRoutes from "./routes/authRoutes";
 import exportRoutes from "./routes/exportRoutes";
+import { setupSwagger } from "./config/swaggerConfig";
 
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet());
 app.use(morgan("dev"));
+setupSwagger(app);
 
 app.use("/api/products", productRoutes);
 app.use("/api/categories", categoryRoutes);
