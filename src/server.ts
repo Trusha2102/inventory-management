@@ -4,6 +4,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import { PORT } from "./config";
 import productRoutes from "./routes/productRoutes";
+import categoryRoutes from "./routes/categoryRoutes";
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(helmet());
 app.use(morgan("dev"));
 
 app.use("/api/products", productRoutes);
+app.use("/api/categories", categoryRoutes);
 
 app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}`)
