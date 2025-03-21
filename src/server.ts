@@ -6,6 +6,8 @@ import { PORT } from "./config";
 import productRoutes from "./routes/productRoutes";
 import categoryRoutes from "./routes/categoryRoutes";
 import stockRoutes from "./routes/stockRoutes";
+import authRoutes from "./routes/authRoutes";
+
 
 
 const app = express();
@@ -18,6 +20,7 @@ app.use(morgan("dev"));
 app.use("/api/products", productRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/stock", stockRoutes);
+app.use("/api/auth", authRoutes);
 
 
 app.listen(PORT, () =>
