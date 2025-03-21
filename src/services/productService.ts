@@ -7,9 +7,42 @@ export const ProductService = {
     return await prisma.product.create({ data });
   },
 
-  async getAllProducts() {
-    return await prisma.product.findMany();
-  },
+async getAllProducts(query?: string, categoryId?: string, minPrice?: number, maxPrice?: number, stockStatus?: string) {
+  const filters: any = {}; // ✅ Collect filters dynamically
+
+  if (query) {
+    filters.OR = [
+      { name: { contains: query, mode: "insensitive" } },
+      { description: { contains: query, mode: "insensitive" } }
+    ];
+  }
+
+  if (categoryId) {
+    filters.categoryId = categoryId;
+  }
+
+  if (minPrice !== undefined) {
+    filters.price = { ...(filters.price || {}), gte: minPrice };
+  }
+
+  if (maxPrice !== undefined) {
+    filters.price = { ...(filters.price || {}), lte: maxPrice };
+  }
+
+  if (stockStatus) {
+    filters.quantity =
+      stockStatus === "in_stock"
+        ? { gt: 0 }
+        : stockStatus === "out_of_stock"
+        ? { equals: 0 }
+        : stockStatus === "low_stock"
+        ? { lt: 5 }
+        : undefined;
+  }
+
+  return await prisma.product.findMany({ where: filters });
+},
+
 
   async getProductById(id: string) {
     return await prisma.product.findUnique({ where: { id } });
@@ -50,4 +83,5 @@ export const ProductService = {
       where: { quantity: { lt: 5 } }, // Fetch products below the threshold
     });
   },
+  
 };

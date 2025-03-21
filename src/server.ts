@@ -8,8 +8,6 @@ import categoryRoutes from "./routes/categoryRoutes";
 import stockRoutes from "./routes/stockRoutes";
 import authRoutes from "./routes/authRoutes";
 
-
-
 const app = express();
 
 app.use(express.json());
@@ -21,7 +19,6 @@ app.use("/api/products", productRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/stock", stockRoutes);
 app.use("/api/auth", authRoutes);
-
 
 app.listen(PORT, () =>
   console.log(`Server running on http://localhost:${PORT}`)

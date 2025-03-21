@@ -18,14 +18,25 @@ export const createProduct = async (req: Request, res: Response) => {
 
 export const getAllProducts = async (req: Request, res: Response) => {
   try {
-    const products = await ProductService.getAllProducts();
+    const { query, categoryId, minPrice, maxPrice, stockStatus } = req.query;
+
+    const products = await ProductService.getAllProducts(
+      query as string,
+      categoryId as string,
+      minPrice ? Number(minPrice) : undefined,
+      maxPrice ? Number(maxPrice) : undefined,
+      stockStatus as string
+    );
+
     res.json(products);
     return;
   } catch (error) {
+    console.error("Error fetching products:", error);
     res.status(500).json({ message: "Error fetching products", error });
     return;
   }
 };
+
 
 export const getProductById = async (req: Request, res: Response) => {
   try {
