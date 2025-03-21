@@ -1,6 +1,5 @@
-### **📜 README.md**
 ```md
-# Inventory Management System 🛍️
+# 📦 Inventory Management System
 
 ## 🚀 Project Overview
 A **Node.js + TypeScript** Inventory Management System with PostgreSQL & Prisma.
@@ -8,8 +7,10 @@ A **Node.js + TypeScript** Inventory Management System with PostgreSQL & Prisma.
 ## 🏗️ Tech Stack
 - **Backend:** Node.js, Express.js, TypeScript
 - **Database:** PostgreSQL with Prisma ORM
-- **Auth:** JWT Authentication
-- **Docs:** Swagger API Documentation
+- **Authentication:** JWT Authentication
+- **API Documentation:** Swagger
+
+---
 
 ## 📌 Features
 ✅ Product & Category Management  
@@ -19,44 +20,63 @@ A **Node.js + TypeScript** Inventory Management System with PostgreSQL & Prisma.
 ✅ Reports Export (CSV & PDF)  
 ✅ API Documentation with Swagger  
 
+---
+
 ## ⚙️ Setup Instructions
 
-### 1️⃣ Install Dependencies
+### 1️⃣ Clone the Repository
+```sh
+git clone https://github.com/your-username/inventory-management-system.git
+cd inventory-management-system
+```
+
+### 2️⃣ Install Dependencies
 ```sh
 npm install
 ```
 
-### 2️⃣ Set Up Database
-Create a `.env` file and configure:
-```
+### 3️⃣ Set Up Environment Variables  
+Create a `.env` file in the root directory and add:
+```sh
 DATABASE_URL=postgresql://user:password@localhost:5432/inventory_db
 JWT_SECRET=your_secret_key
 ```
-Run Prisma migrations:
+
+### 4️⃣ Set Up the Database  
+Run the following commands to initialize the database:
 ```sh
 npx prisma migrate dev --name init
+npx prisma generate
 ```
 
-### 3️⃣ Start the Server
+### 5️⃣ Start the Server
 ```sh
 npm run dev
 ```
-API available at `http://localhost:5000` 🚀  
-
-### 4️⃣ Run Tests
+✅ The API will be available at:  
 ```sh
-npm test
+http://localhost:5000
 ```
+
+---
 
 ## 📖 API Documentation
-Swagger docs available at:
-```
+Swagger API documentation is available at:
+```sh
 http://localhost:5000/api-docs
 ```
 
 ---
 
-### **📌 Folder Structure**
+## 🛠️ Run Tests
+To ensure everything is working correctly, run:
+```sh
+npm test
+```
+
+---
+
+## 📂 Folder Structure
 ```
 📂 inventory-management-system
 │-- 📂 src
@@ -73,12 +93,13 @@ http://localhost:5000/api-docs
 │-- README.md            # Project documentation
 ```
 
-## 📌 Contribution Guidelines
-1️⃣ Fork the repo & create a feature branch  
+---
+
+## 🤝 Contribution Guidelines
+1️⃣ **Fork the repository** and create a new branch  
 2️⃣ Follow the project coding style  
-3️⃣ Submit a pull request with a detailed description  
+3️⃣ Submit a **pull request** with a clear description  
 
 ---
 
-🎉 **Happy coding!** 🚀  
-```
+## 🎉 Happy Coding! 🚀
