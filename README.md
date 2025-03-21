@@ -24,8 +24,10 @@ A **Node.js + TypeScript** Inventory Management System with PostgreSQL & Prisma.
 ## ⚙️ Setup Instructions
 
 ### 1️⃣ Clone the Repository
+```
 git clone https://github.com/your-username/inventory-management-system.git
 cd inventory-management-system
+```
 
 ### 2️⃣ Install Dependencies
 ```sh
