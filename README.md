@@ -12,8 +12,6 @@ A **Node.js + TypeScript** Inventory Management System with PostgreSQL & Prisma.
 - **Authentication:** JWT Authentication
 - **API Documentation:** Swagger
 
----
-
 ## 📌 Features
 ✅ Product & Category Management  
 ✅ Stock Level Tracking with Alerts  
@@ -22,12 +20,9 @@ A **Node.js + TypeScript** Inventory Management System with PostgreSQL & Prisma.
 ✅ Reports Export (CSV & PDF)  
 ✅ API Documentation with Swagger  
 
----
-
 ## ⚙️ Setup Instructions
 
 ### 1️⃣ Clone the Repository
-```sh
 git clone https://github.com/your-username/inventory-management-system.git
 cd inventory-management-system
 ```
